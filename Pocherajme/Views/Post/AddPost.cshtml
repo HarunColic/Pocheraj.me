@@ -1,0 +1,61 @@
+﻿@using Pocherajme.Models
+@{
+    ViewData["Title"] = "Add Post";
+    var Transports = (List<TransportType>)ViewData["TransportTypes"];
+    }
+
+<h2>Add Post</h2>
+
+<div class="form-group" style="padding: 0 25% 0 25%;">
+    <form action="/Post/SavePost" method="post">
+        <div class="form-group">
+            <label>Post Title</label>
+            <input class="form-control" type="text" name="title" placeholder="Post Title" /><br />
+        </div>
+        <div class="form-group">
+            <label>Post Description</label>
+            <textarea class="form-control" name="description" placeholder="Post Description"></textarea><br />
+        </div>
+        <div class="form-group">
+            <label>Location of arrival</label>
+            <input class="form-control" type="text" name="to" placeholder="Traveling to..." /><br />
+        </div>
+        <div class="form-group">
+            <label>Location of departure</label>
+            <input class="form-control" type="text" name="from" placeholder="Traveling from..." /><br />
+        </div>
+        <div class="form-group" >
+            <label>Date of departure</label>
+            <input class="form-control" type="date" name="DateOfDeparture" /><br />
+        </div>
+        <div class="form-group">
+            <label>Max number of passengers</label>
+            <input class="form-control" type="number" name="MaxPassengers" placeholder="Max passengers" /><br />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input class="form-control" type="number" name="price" step="0.01" placeholder="Price" /><br />
+        </div>
+        <div class="form-group">
+            <label>Estimated time of travel</label>
+            <input class="form-control" type="number" name="ETA" placeholder="Estimated time of travel" /><br />
+        </div>
+        <div class="form-group">
+            <label>Car (Make and Model)</label>
+            <input class="form-control" type="text" name="car" placeholder="Car make and/or model" /><br />
+        </div>
+        <div class="form-group">
+            <label>Type of transport</label>
+            <select class="form-control" name="TransportType">
+                <option disabled> Chose a transport type </option>
+                @foreach (TransportType t in Transports)
+                {
+                    <option value="@t.TransportTypeID"> @t.Type </option>
+                }
+
+            </select><br />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save"/>
+
+</form>
+</div>
