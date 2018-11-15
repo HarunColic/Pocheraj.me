@@ -49,6 +49,7 @@ namespace Pocherajme.Controllers
             post.Car = car;
             post.TransportTypeID = TransportType;
             post.TypeOfTransport = TT;
+            post.CreatedAt = DateTime.Now;
 
             _postRepo.Save(post);
 
