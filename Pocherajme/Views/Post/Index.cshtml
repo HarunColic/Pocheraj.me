@@ -1,0 +1,31 @@
+﻿@using Pocherajme.Models
+@{
+    ViewData["Title"] = "Apply for post";
+    var posts = (List<Post>)ViewData["Posts"];
+}
+<h2>Apply for Post</h2>
+<div class="container" style="padding: 0 25% 0 25%;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Time of departure</th>
+                <th scope="col">Apply</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in posts)
+            {
+            <tr>
+                <th scope="row">@item.Title</th>
+                <td>@item.From</td>
+                <td>@item.To</td>
+                <td>@item.DateTimeOfDeparture</td>
+                <td><a href="/Post/Apply/@item.PostID" class="btn btn-default">Apply</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
