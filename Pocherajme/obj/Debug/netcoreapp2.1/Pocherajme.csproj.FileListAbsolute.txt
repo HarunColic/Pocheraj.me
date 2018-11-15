@@ -71,3 +71,4 @@ C:\Users\mirsad\Desktop\Seminarski\Pocheraj.me\Pocherajme\obj\Debug\netcoreapp2.
 C:\Users\mirsad\Desktop\Seminarski\Pocheraj.me\Pocherajme\obj\Debug\netcoreapp2.1\Pocherajme.pdb
 C:\Users\mirsad\Desktop\Seminarski\Pocheraj.me\Pocherajme\obj\Debug\netcoreapp2.1\Pocherajme.csproj.CopyComplete
 C:\Users\mirsad\Desktop\Seminarski\Pocheraj.me\Pocherajme\obj\Debug\netcoreapp2.1\Razor\Views\Post\Index.g.cshtml.cs
+C:\Users\Harun\source\repos\Pocherajme\Pocherajme\obj\Debug\netcoreapp2.1\Razor\Views\Post\Index.g.cshtml.cs
