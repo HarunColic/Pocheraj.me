@@ -17,6 +17,7 @@ namespace Pocherajme.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["Posts"] = _postRepo.GetAll();
             return View();
         }
 
