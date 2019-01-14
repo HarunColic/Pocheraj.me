@@ -31,10 +31,17 @@ namespace Pocherajme.Controllers
         }
 
         public IActionResult SavePost(string title, string description, string to, string from, 
-            DateTime DateOfDeparture, int MaxPassengers, float price, int ETA, string car, int TransportType)
+            DateTime DateOfDeparture, string TimeOfDeparture, int MaxPassengers, float price, int ETA, string car, int TransportType)
         {
 
             TransportType TT = _TTRepo.Get(TransportType);
+
+            string [] time = TimeOfDeparture.Split(":");
+
+            int hour = int.Parse(time[0]);
+            int minute = int.Parse(time[1]);
+
+            DateTime DateTimeDep = new DateTime(DateOfDeparture.Year, DateOfDeparture.Month, DateOfDeparture.Day, hour, minute, 0);
 
             Post post = new Post();
 
@@ -42,7 +49,7 @@ namespace Pocherajme.Controllers
             post.Description = description;
             post.To = to;
             post.From = from;
-            post.DateTimeOfDeparture = DateOfDeparture;
+            post.DateTimeOfDeparture = DateTimeDep;
             post.MaxPassengers = MaxPassengers;
             post.Price = price;
             post.EstimatedTravelTime = ETA;
