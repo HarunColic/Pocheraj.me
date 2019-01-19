@@ -53,7 +53,7 @@ namespace Pocherajme.Controllers
             post.MaxPassengers = MaxPassengers;
             post.Price = price;
             post.EstimatedTravelTime = ETA;
-            post.Car = car;
+            post.Car = car; 
             post.TransportTypeID = TransportType;
             post.TypeOfTransport = TT;
             post.CreatedAt = DateTime.Now;

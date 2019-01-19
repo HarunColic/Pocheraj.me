@@ -23,7 +23,7 @@ namespace Pocherajme.Models
         [ForeignKey("TypeOfTransport")]
         public int TransportTypeID { get; set; }
         public TransportType TypeOfTransport { get; set; }
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get;  set; }
         public DateTime? UpdatedAt { get; set; }
 
     }
