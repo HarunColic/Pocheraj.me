@@ -4,9 +4,18 @@
 }
 
 @model List<Pocherajme.Models.Post>
-<div class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
-    @if (Model.Count == 0)
-    {
+
+
+<div id="Posts" class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
+
+
+    <div>
+        <label class="form-check-label" >Potraznja</label>
+        <input type="checkbox" name="potraznja" value="1" />
+        <label class="form-check-label">Ponuda</label>
+        <input type="checkbox" name="ponuda" value="0" />
+    </div>
+               @if (Model.Count == 0) {
         <h1>Trenutno nema prevoza</h1>
     }
     else
@@ -31,10 +40,10 @@
                         <td>@item.From</td>
                         <td>@item.To</td>
                         <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
-                        
+
                         <form method="post" action="/Post/Apply/@item.PostID">
                             @Html.AntiForgeryToken()
-                            <td><input type="submit" class="btn btn-default" value="Prijavi"/></td>
+                            <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
                         </form>
 
                         <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>

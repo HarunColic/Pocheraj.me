@@ -34,11 +34,19 @@ namespace Pocherajme.Repositories
 
         public List<Post> GetAllWithFilter(ArrayList filters)
         {
-            int UserID = int.Parse(filters[1].ToString());
+            int UserID = 0;
+
+            if (filters.Count > 1)
+                UserID = int.Parse(filters[1].ToString());
+            
+                
             bool IsPotraznja = int.Parse(filters[0].ToString()) == 0;//ako je 0 onda je zatrazena potrazna, ako je false onda je ponuda
             try
             {
-                return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja && p.ApplicationUserID == UserID).ToList();
+                if (UserID != 0)
+                    return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja && p.ApplicationUserID == UserID).ToList();
+                else
+                    return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja).ToList();
             }
             catch
             {

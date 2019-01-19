@@ -143,12 +143,18 @@ namespace Pocherajme.Controllers
         public IActionResult GetPostsByType(int type)
         {
 
-            if(type == 0)
-            {
-                _postRepo.GetAllWithFilter()
-            }
+            ArrayList lista = new ArrayList();
 
-            return PartialView();
+            lista.Add(type);
+
+            List<Post> model;
+
+            if (type == 0 || type == 1)
+               model = _postRepo.GetAllWithFilter(lista);
+            else
+               model = _postRepo.GetAll();
+
+            return PartialView("PostsByType", model);
         }
         
     }
