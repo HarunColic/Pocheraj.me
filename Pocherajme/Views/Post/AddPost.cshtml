@@ -1,13 +1,14 @@
 ﻿@using Pocherajme.Models
 @{
     ViewData["Title"] = "Add Post";
-    var Transports = (List<TransportType>)ViewData["TransportTypes"];
     }
-
+    @model List<TransportType>
 <h2>Add Post</h2>
 
 <div class="form-group" style="padding: 0 25% 0 25%;">
-    <form action="/Post/SavePost" method="post">
+    <form action="/Post/SavePonuda" method="post">
+        @Html.AntiForgeryToken()
+
         <div class="form-group">
             <label>Post Title</label>
             <input class="form-control" type="text" name="title" placeholder="Post Title" /><br />
@@ -52,7 +53,7 @@
             <label>Type of transport</label>
             <select class="form-control" name="TransportType">
                 <option disabled> Chose a transport type </option>
-                @foreach (TransportType t in Transports)
+                @foreach (TransportType t in Model)
                 {
                     <option value="@t.TransportTypeID"> @t.Type </option>
                 }

@@ -16,7 +16,6 @@ namespace Pocherajme.Models
         public float Price { get; set; }
         public bool IsPotraznja { get; set; }
         public DateTime DateTimeOfDeparture { get; set; }
-
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public int? MaxPassengers { get; set; }

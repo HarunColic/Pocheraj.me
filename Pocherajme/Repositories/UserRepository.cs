@@ -2,6 +2,7 @@
 using Pocherajme.Data;
 using Pocherajme.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,5 +29,14 @@ namespace Pocherajme.Repositories
             return _db.Users.ToList();
         }
 
+        public bool Exists(ArrayList list)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        ApplicationUser IRepository<ApplicationUser>.Save(ApplicationUser obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
