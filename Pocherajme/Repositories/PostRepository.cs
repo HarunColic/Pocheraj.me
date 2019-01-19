@@ -34,23 +34,17 @@ namespace Pocherajme.Repositories
 
         public List<Post> GetAllWithFilter(ArrayList filters)
         {
+            int UserID = int.Parse(filters[1].ToString());
+            bool IsPotraznja = int.Parse(filters[0].ToString()) == 0;//ako je 0 onda je zatrazena potrazna, ako je false onda je ponuda
             try
             {
-                if (filters.IndexOf(0) == 1)
-                {
-                    return _db.Posts.Include("Users").Where(p => p.IsPotraznja == false).ToList();
-                }
-                else if (filters.IndexOf(0) == 0)
-                {
-                    return _db.Posts.Include("Users").Where(p => p.IsPotraznja == true).ToList();
-                }
+                return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja && p.ApplicationUserID == UserID).ToList();
             }
             catch
             {
+                return _db.Posts.Where(s => s.ApplicationUserID == UserID).ToList();
                 //log error
             }
-
-           return _db.Posts.ToList();
         }
 
         public Post Save(Post post)
