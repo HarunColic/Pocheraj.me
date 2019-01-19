@@ -11,6 +11,7 @@ namespace Pocherajme.Repositories
         T Get(int id);
         T Save(T obj);
         List<T> GetAll();
+        List<T> GetAllWithFilter(ArrayList filters);
         bool Exists(ArrayList list);
     }
 }

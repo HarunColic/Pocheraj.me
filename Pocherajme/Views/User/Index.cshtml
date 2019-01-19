@@ -1,14 +1,23 @@
-﻿@model Pocherajme.Models.ApplicationUser
+﻿@model Pocherajme.ViewModels.UserProfilVM
 
 @{
     ViewData["Title"] = "Profil";
 }
 
 <hr class="">
+@if (Model.User.City == null)
+{
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>UPOZORENJE!</h4>
+        <p>Vaš profil je nedovršen. Molimo da nadopunite sve bitne informacije na linku: <a href="/User/Edit" class="alert-link"> Doradi profil</a></p>
+    </div>
+}
+
 <div class="container target">
     <div class="row">
         <div class="col-sm-10">
-            <h1 class="">@Model.FirstName @Model.LastName</h1>
+            <h1 class="">@Model.User.FirstName @Model.User.LastName</h1>
             <br>
         </div>
     </div>
@@ -18,18 +27,18 @@
             <!--left col-->
             <ul class="list-group">
                 <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-                @if (!String.IsNullOrEmpty(Model.PhoneNumber))
+                @if (!String.IsNullOrEmpty(Model.User.PhoneNumber))
                 {
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Broj telefona </strong></span>@Model.PhoneNumber</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Broj telefona </strong></span>@Model.User.PhoneNumber</li>
                 }
                 else
                 {
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Broj telefona </strong></span> N/A</li>
                 }
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email </strong></span> <a href="mailto:@Model.Email">@Model.Email</a></li>
-                @if (Model.City != null)
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email </strong></span> <a href="mailto:@Model.User.Email">@Model.User.Email</a></li>
+                @if (Model.User.City != null)
                 {
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Grad </strong></span> @Model.City.Name</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Grad </strong></span> @Model.User.City.Name</li>
                 }
                 else
                 {
@@ -41,7 +50,7 @@
                     Ovjeren
                 </div>
                 <div class="panel-body">
-                    @if (Model.EmailConfirmed)
+                    @if (Model.User.EmailConfirmed)
                     {
                         <span>
 
@@ -71,13 +80,46 @@
         <!--/col-3-->
         <div class="col-sm-9" style="" contenteditable="false">
             <div class="panel panel-default">
-                <div class="panel-heading">Starfox221's Bio</div>
-                <div class="panel-body">
-                    A long description about me.
+                <div class="panel-heading">Ponude</div>
+                @if (Model.Ponude.Count == 0)
+                {
+                    <h1>Trenutno nema prevoza</h1>
+                }
+                else
+                {
 
-                </div>
+                    <h2>Prijavi oglas</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Naslov</th>
+                                <th scope="col">OD</th>
+                                <th scope="col">DO</th>
+                                <th scope="col">Vrijeme polaska</th>
+                                <th scope="col">Akcije</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Ponude)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Title</th>
+                                    <td>@item.From</td>
+                                    <td>@item.To</td>
+                                    <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
+                                    <td><a href="/Post/Apply/@item.PostID" class="btn btn-default">Prijavi</a></td>
+                                    <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
             </div>
+
+
             <div class="panel panel-default target">
+
                 <div class="panel-heading" contenteditable="false">Pets I Own</div>
                 <div class="panel-body">
                     <div class="row">
@@ -136,76 +178,5 @@
                 </div>
 
             </div>
-
-            <script src="/plugins/bootstrap-select.min.js"></script>
-            <script src="/codemirror/jquery.codemirror.js"></script>
-            <script src="/beautifier.js"></script>
-            <script>
-                (function (i, s, o, g, r, a, m) {
-                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-                ga('create', 'UA-40413119-1', 'bootply.com');
-                ga('send', 'pageview');</script>
-            <script>
-                jQuery.fn.shake = function (intShakes, intDistance, intDuration, foreColor) {
-                    this.each(function () {
-                        if (foreColor && foreColor != "null") {
-                            $(this).css("color", foreColor);
-                        }
-                        $(this).css("position", "relative");
-                        for (var x = 1; x <= intShakes; x++) {
-                            $(this).animate({ left: (intDistance * -1) }, (((intDuration / intShakes) / 4)))
-                                .animate({ left: intDistance }, ((intDuration / intShakes) / 2))
-                                .animate({ left: 0 }, (((intDuration / intShakes) / 4)));
-                            $(this).css("color", "");
-                        }
-                    });
-                    return this;
-                };</script>
-            <script>
-                $.fn.serializeObject = function () {
-                    var o = {};
-                    var a = this.serializeArray();
-                    $.each(a, function () {
-                        if (o[this.name] !== undefined) {
-                            if (!o[this.name].push) {
-                                o[this.name] = [o[this.name]];
-                            }
-                            o[this.name].push(this.value || '');
-                        } else {
-                            o[this.name] = this.value || '';
-                        }
-                    });
-                    return o;
-                };
-                var prependAlert = function (appendSelector, msg) {
-                    $(appendSelector).after('<div class="alert alert-info alert-block affix" id="msgBox" style="z-index:1300;margin:14px!important;">' + msg + '</div>');
-                    $('.alert').delay(3500).fadeOut(1000);
-                }</script>
-            <!-- Quantcast Tag -->
-            <script type="text/javascript">
-                var _qevents = _qevents || [];
-
-                (function () {
-                    var elem = document.createElement('script');
-                    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-                    elem.async = true;
-                    elem.type = "text/javascript";
-                    var scpt = document.getElementsByTagName('script')[0];
-                    scpt.parentNode.insertBefore(elem, scpt);
-                })();
-
-                _qevents.push({
-                    qacct: "p-0cXb7ATGU9nz5"
-                });</script>
-            <noscript>
-                &amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;div style="display:none;"&amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;
-                &amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;img src="//pixel.quantserve.com/pixel/p-0cXb7ATGU9nz5.gif" border="0" height="1" width="1" alt="Quantcast"/&amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;
-                &amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;/div&amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;
-            </noscript>
-            <!-- End Quantcast tag -->
         </div>
     </div>

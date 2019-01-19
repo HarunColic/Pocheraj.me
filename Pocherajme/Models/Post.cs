@@ -24,5 +24,10 @@ namespace Pocherajme.Models
         public TransportType TypeOfTransport { get; set; }
         [ForeignKey("TypeOfTransport")]
         public int? TransportTypeID { get; set; }
+
+        public ApplicationUser User { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public int? ApplicationUserID { get; set; }
+
     }
 }

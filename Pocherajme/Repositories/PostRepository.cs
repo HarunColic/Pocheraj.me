@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pocherajme.Repositories
 {
-    public class PostRepository: IRepository<Post>
+    public class PostRepository : IRepository<Post>
     {
         private ApplicationDbContext _db;
         public PostRepository(ApplicationDbContext db)
@@ -31,6 +31,28 @@ namespace Pocherajme.Repositories
 
             return _db.Posts.ToList();
         }
+
+        public List<Post> GetAllWithFilter(ArrayList filters)
+        {
+            try
+            {
+                if (filters.IndexOf(0) == 1)
+                {
+                    return _db.Posts.Include("Users").Where(p => p.IsPotraznja == false).ToList();
+                }
+                else if (filters.IndexOf(0) == 0)
+                {
+                    return _db.Posts.Include("Users").Where(p => p.IsPotraznja == true).ToList();
+                }
+            }
+            catch
+            {
+                //log error
+            }
+
+           return _db.Posts.ToList();
+        }
+
         public Post Save(Post post)
         {
             _db.Posts.Add(post);

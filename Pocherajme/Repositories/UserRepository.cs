@@ -38,5 +38,10 @@ namespace Pocherajme.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public List<ApplicationUser> GetAllWithFilter(ArrayList filters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
