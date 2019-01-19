@@ -1,0 +1,32 @@
+﻿@model Pocherajme.ViewModels.EditUserVM
+
+@{
+    ViewData["Title"] = "Uredi profil";
+}
+
+<hr />
+
+<div class="container">
+    <form class="form-group" action="/User/Edit" method="post">
+        @Html.AntiForgeryToken()
+        <label class="col-form-label" for="firstname">Ime</label>
+        <br />
+        <input type="text" name="firstname" value="@Model.FirstName" />
+
+
+        <label class="col-form-label" for="firstname">Ime</label>
+        <br />
+        <input type="text" name="firstname" value="@Model.FirstName" />
+
+
+        <label class="col-form-label" for="firstname">Ime</label>
+        <br />
+        <input type="text" name="firstname" value="@Model.FirstName" />
+
+
+        <label class="col-form-label" for="firstname">Ime</label>
+        <br />
+        <input type="text" name="firstname" value="@Model.FirstName" />
+    </form>
+
+</div>

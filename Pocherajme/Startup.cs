@@ -41,6 +41,8 @@ namespace Pocherajme
             services.AddScoped<IRepository<Post>, PostRepository>();
             services.AddScoped<IRepository<TransportType>, TransportTypeRepository>();
             services.AddScoped<IRepository<ApplicationUser>, UserRepository>();
+            services.AddScoped<IRepository<Application>, ApplicationRepository>();
+            services.AddScoped<IRepository<City>, CityRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
