@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
