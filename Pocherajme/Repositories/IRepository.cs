@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace Pocherajme.Repositories
     public interface IRepository<T>
     {
         T Get(int id);
-        void Save(T obj);
+        T Save(T obj);
         List<T> GetAll();
+        bool Exists(ArrayList list);
     }
 }

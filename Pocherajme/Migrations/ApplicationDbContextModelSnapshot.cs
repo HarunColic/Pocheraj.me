@@ -15,7 +15,7 @@ namespace Pocherajme.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -280,7 +280,9 @@ namespace Pocherajme.Migrations
 
                     b.Property<string>("From");
 
-                    b.Property<int>("MaxPassengers");
+                    b.Property<bool>("IsPotraznja");
+
+                    b.Property<int?>("MaxPassengers");
 
                     b.Property<float>("Price");
 
@@ -288,7 +290,7 @@ namespace Pocherajme.Migrations
 
                     b.Property<string>("To");
 
-                    b.Property<int>("TransportTypeID");
+                    b.Property<int?>("TransportTypeID");
 
                     b.Property<DateTime?>("UpdatedAt");
 
@@ -454,8 +456,7 @@ namespace Pocherajme.Migrations
                 {
                     b.HasOne("Pocherajme.Models.TransportType", "TypeOfTransport")
                         .WithMany()
-                        .HasForeignKey("TransportTypeID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TransportTypeID");
                 });
 
             modelBuilder.Entity("Pocherajme.Models.PostImages", b =>

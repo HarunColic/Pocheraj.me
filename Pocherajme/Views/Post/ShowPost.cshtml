@@ -1,0 +1,41 @@
+﻿@using Pocherajme.Models
+@{
+    ViewData["Title"] = "ShowPost";
+}
+@model Post
+
+<div class="container" style="justify-content: center; padding-left: 25%; padding-right: 25%;">
+
+    <h2 style="text-align: center; padding-bottom: 80px;" >ShowPost</h2>
+
+
+    <label class="form-check-label">Title</label>
+    <label class="form-control">@Model.Title</label>
+
+    <label class="form-check-label">Description</label>
+    <label class="form-control">@Model.Description</label>
+
+    <label class="form-check-label">Destination</label>
+    <label class="form-control">@Model.To</label>
+
+    <label class="form-check-label">Departure</label>
+    <label class="form-control">@Model.From</label>
+
+    <label class="form-check-label">Date and Time of Departure</label>
+    <label class="form-control">@Model.DateTimeOfDeparture</label>
+
+    <label class="form-check-label">Number of Passengers</label>
+    <label class="form-control">@Model.MaxPassengers</label>
+
+    <label class="form-check-label">Estimated Time of Travel</label>
+    <label class="form-control">@Model.EstimatedTravelTime</label>
+
+    <label class="form-check-label">Car (Make and Model)</label>
+    <label class="form-control">@Model.Title</label>
+
+    <label class="form-check-label">Type of Transport</label>
+    <label class="form-control">@Model.TypeOfTransport.Type</label>
+
+</div>
+
+<input class="btn btn-default" type="button" onclick="location.href='/Post/Apply/@Model.PostID'" value="Prijavi" />

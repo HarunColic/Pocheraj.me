@@ -1,6 +1,7 @@
 ﻿using Pocherajme.Data;
 using Pocherajme.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace Pocherajme.Repositories
             _db = db;
         }
 
+        public bool Exists(ArrayList list)
+        {
+            throw new NotImplementedException();
+        }
+
         public TransportType Get(int id)
         {
 
@@ -27,11 +33,13 @@ namespace Pocherajme.Repositories
             return _db.TransportTypes.ToList();
         }
 
-        public void Save(TransportType tt)
+        public TransportType Save(TransportType tt)
         {
 
             _db.TransportTypes.Add(tt);
             _db.SaveChanges();
+
+            return tt;
         }
     }
 }

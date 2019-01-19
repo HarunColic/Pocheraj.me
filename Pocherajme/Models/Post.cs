@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Pocherajme.Models
 {
@@ -15,16 +12,17 @@ namespace Pocherajme.Models
         public string Description { get; set; }
         public string To { get; set; }
         public string From { get; set; }
-        public DateTime DateTimeOfDeparture { get; set; }
-        public int MaxPassengers { get; set; }
-        public float Price { get; set; }
-        public int? EstimatedTravelTime { get; set; }
         public string Car { get; set; }
-        [ForeignKey("TypeOfTransport")]
-        public int TransportTypeID { get; set; }
-        public TransportType TypeOfTransport { get; set; }
-        public DateTime? CreatedAt { get;  set; }
+        public float Price { get; set; }
+        public bool IsPotraznja { get; set; }
+        public DateTime DateTimeOfDeparture { get; set; }
+        public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public int? MaxPassengers { get; set; }
+        public int? EstimatedTravelTime { get; set; }
 
+        public TransportType TypeOfTransport { get; set; }
+        [ForeignKey("TypeOfTransport")]
+        public int? TransportTypeID { get; set; }
     }
 }

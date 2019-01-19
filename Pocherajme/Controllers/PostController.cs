@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pocherajme.Models;
 using Pocherajme.Repositories;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Pocherajme.Controllers
 {
@@ -10,57 +13,130 @@ namespace Pocherajme.Controllers
     {
         private IRepository<Post> _postRepo;
         private IRepository<TransportType> _TTRepo;
-        public PostController(IRepository<Post> ps, IRepository<TransportType> TTRepo)
+        private IRepository<Application> _applicationRepo;
+        private UserManager<ApplicationUser> _user;
+        public PostController(IRepository<Post> ps, IRepository<TransportType> TTRepo, UserManager<ApplicationUser> user, IRepository<Application> app)
         {
+            _user = user;
             _postRepo = ps;
             _TTRepo = TTRepo;
+            _applicationRepo = app; 
         }
         public IActionResult Index()
         {
-            ViewData["Posts"] = _postRepo.GetAll();
+            List<Post> model = _postRepo.GetAll();
+            return View("Index", model);
+        }
+        
+        public IActionResult Create()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return Redirect("/Home");
+
+            //to do add view model for add
+            List<TransportType> model = _TTRepo.GetAll();
+
+            return View("AddPost", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SavePotraznja(IFormCollection collection)
+        {
+            try
+            {
+                var model = this.savePost(collection, true);
+                return RedirectToAction("ShowPost", new { id = model.PostID });
+
+            }
+            catch (Exception)
+            {
+                return Redirect("/Home/Error");
+            }
+
             return View();
         }
 
-        public IActionResult AddPost()
-        {
-            if (!User.Identity.IsAuthenticated)
-                return Redirect("/home");
 
-            ViewData["TransportTypes"] = _TTRepo.GetAll();
-            return View("AddPost");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SavePonuda(IFormCollection collection)
+        {
+
+            try
+            {
+
+            var model = this.savePost(collection, false);
+                return RedirectToAction("ShowPost", new { id = model.PostID});
+            }
+            catch (Exception)
+            {
+                Redirect("/Home/Error");
+            }
+
+            return View();
         }
 
-        public IActionResult SavePost(string title, string description, string to, string from, 
-            DateTime DateOfDeparture, string TimeOfDeparture, int MaxPassengers, float price, int ETA, string car, int TransportType)
-        {
-
-            TransportType TT = _TTRepo.Get(TransportType);
-
-            string [] time = TimeOfDeparture.Split(":");
-
+        Post savePost(IFormCollection collection, bool potraznja)
+    {
+            TransportType TT = _TTRepo.Get(int.Parse(collection["TransportType"]));
+            string[] time = collection["TimeOfDeparture"].ToString().Split(":");
             int hour = int.Parse(time[0]);
             int minute = int.Parse(time[1]);
-
-            DateTime DateTimeDep = new DateTime(DateOfDeparture.Year, DateOfDeparture.Month, DateOfDeparture.Day, hour, minute, 0);
-
+            DateTime dateOfd = DateTime.Parse(collection["DateOfDeparture"]);
+            DateTime DateTimeDep = new DateTime(dateOfd.Year, dateOfd.Month, dateOfd.Day, hour, minute, 0);
             Post post = new Post();
-
-            post.Title = title;
-            post.Description = description;
-            post.To = to;
-            post.From = from;
+            post.Title = collection["title"];
+            post.Description = collection["description"];
+            post.To = collection["to"];
+            post.From = collection["from"];
             post.DateTimeOfDeparture = DateTimeDep;
-            post.MaxPassengers = MaxPassengers;
-            post.Price = price;
-            post.EstimatedTravelTime = ETA;
-            post.Car = car; 
-            post.TransportTypeID = TransportType;
+            post.MaxPassengers = int.Parse(collection["MaxPassengers"]);
+            post.Price = float.Parse(collection["price"]);
+            post.EstimatedTravelTime = int.Parse(collection["ETA"]);
+            post.Car = collection["car"];
+            post.TransportTypeID = TT.TransportTypeID;
             post.TypeOfTransport = TT;
             post.CreatedAt = DateTime.Now;
+            post.IsPotraznja = potraznja;
 
-            _postRepo.Save(post);
+            return _postRepo.Save(post);
+        }
 
-            return Redirect("/Post/AddPost");
+        public IActionResult ShowPost(int id)
+        {
+
+            var model = _postRepo.Get(id);
+
+            return View("ShowPost", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Apply(int id)
+        {
+
+            if (!User.Identity.IsAuthenticated)
+                return Redirect("/Home");
+
+            ArrayList lista = new ArrayList();
+
+            lista.Add(id);
+            lista.Add(int.Parse(_user.GetUserId(User)));
+
+            if (!_applicationRepo.Exists(lista))
+                return Redirect("/Home");
+
+            Application aplikacija = new Application();
+
+            aplikacija.PostID = id;
+            aplikacija.UserID = int.Parse(_user.GetUserId(User));
+            aplikacija.CreatedAt = DateTime.Now;
+
+            _applicationRepo.Save(aplikacija);
+
+
+            return RedirectToAction("Index");
         }
     }
 }
