@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Pocherajme.Repositories
 {
@@ -31,6 +30,11 @@ namespace Pocherajme.Repositories
         {
 
             return _db.TransportTypes.ToList();
+        }
+
+        public List<TransportType> GetAllWithFilter(ArrayList filters)
+        {
+            throw new NotImplementedException();
         }
 
         public TransportType Save(TransportType tt)

@@ -1,144 +1,182 @@
-﻿@model Pocherajme.Models.ApplicationUser
+﻿@model Pocherajme.ViewModels.UserProfilVM
 
 @{
     ViewData["Title"] = "Profil";
 }
 
-<h2>Index</h2>
+<hr class="">
+@if (Model.User.City == null)
+{
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>UPOZORENJE!</h4>
+        <p>Vaš profil je nedovršen. Molimo da nadopunite sve bitne informacije na linku: <a href="/User/Edit" class="alert-link"> Doradi profil</a></p>
+    </div>
+}
 
-<div>
-    <h4>ApplicationUser</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CityID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CityID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NormalizedUserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NormalizedUserName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NormalizedEmail)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NormalizedEmail)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ConcurrencyStamp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnd)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnd)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+<div class="container target">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1 class="">@Model.User.FirstName @Model.User.LastName</h1>
+            <br>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+            <ul class="list-group">
+                <li class="list-group-item text-muted" contenteditable="false">Profile</li>
+                @if (!String.IsNullOrEmpty(Model.User.PhoneNumber))
+                {
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Broj telefona </strong></span>@Model.User.PhoneNumber</li>
+                }
+                else
+                {
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Broj telefona </strong></span> N/A</li>
+                }
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email </strong></span> <a href="mailto:@Model.User.Email">@Model.User.Email</a></li>
+                @if (Model.User.City != null)
+                {
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Grad </strong></span> @Model.User.City.Name</li>
+                }
+                else
+                {
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Grad </strong></span> N/A</li>
+                }
+            </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ovjeren
+                </div>
+                <div class="panel-body">
+                    @if (Model.User.EmailConfirmed)
+                    {
+                        <span>
+
+                            <i style="color:green" class="fa fa-check-square"></i> Korisnik je ovjerio svoj nalog.
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+
+                            <i style="color:green" class="fa fa-cross"></i>Korisnik nije ovjerio svoj nalog.
+                        </span>
+
+                    }
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ocjena <i class="fa fa-link fa-1x"></i>
+                </div>
+                <div class="panel-body">
+                    4.5
+                </div>
+            </div>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9" style="" contenteditable="false">
+            <div class="panel panel-default">
+                <div class="panel-heading">Ponude</div>
+                @if (Model.Ponude.Count == 0)
+                {
+                    <h1>Trenutno nema prevoza</h1>
+                }
+                else
+                {
+
+                    <h2>Prijavi oglas</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Naslov</th>
+                                <th scope="col">OD</th>
+                                <th scope="col">DO</th>
+                                <th scope="col">Vrijeme polaska</th>
+                                <th scope="col">Akcije</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Ponude)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Title</th>
+                                    <td>@item.From</td>
+                                    <td>@item.To</td>
+                                    <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
+                                    <td><a href="/Post/Apply/@item.PostID" class="btn btn-default">Prijavi</a></td>
+                                    <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+
+
+            <div class="panel panel-default target">
+
+                <div class="panel-heading" contenteditable="false">Pets I Own</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img alt="300x200" src="http://lorempixel.com/600/200/people">
+                                <div class="caption">
+                                    <h3>
+                                        Rover
+                                    </h3>
+                                    <p>
+                                        Cocker Spaniel who loves treats.
+                                    </p>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img alt="300x200" src="http://lorempixel.com/600/200/city">
+                                <div class="caption">
+                                    <h3>
+                                        Marmaduke
+                                    </h3>
+                                    <p>
+                                        Is just another friendly dog.
+                                    </p>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <img alt="300x200" src="http://lorempixel.com/600/200/sports">
+                                <div class="caption">
+                                    <h3>
+                                        Rocky
+                                    </h3>
+                                    <p>
+                                        Loves catnip and naps. Not fond of children.
+                                    </p>
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>

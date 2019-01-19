@@ -1,12 +1,23 @@
 ﻿@using Pocherajme.Models
 @{
     ViewData["Title"] = "Add Post";
+    int potraznja = int.Parse(ViewData["Potraznja"].ToString());
+    string link;
+    if (potraznja == 1) {
+        link = "/Post/SavePotraznja/";
     }
+    else {
+        link = "/Post/SavePonuda/";
+    }
+
+}
+
     @model List<TransportType>
 <h2>Add Post</h2>
 
 <div class="form-group" style="padding: 0 25% 0 25%;">
-    <form action="/Post/SavePonuda" method="post">
+    
+    <form action="@link" method="post">
         @Html.AntiForgeryToken()
 
         <div class="form-group">

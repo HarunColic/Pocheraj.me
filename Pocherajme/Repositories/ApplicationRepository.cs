@@ -50,5 +50,10 @@ namespace Pocherajme.Repositories
                 return false;
 
         }
+
+        public List<Application> GetAllWithFilter(ArrayList filters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

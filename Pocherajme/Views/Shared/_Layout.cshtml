@@ -34,7 +34,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Prevozi <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a asp-controller="Post" asp-action="Create">Objavi prevoz</a></li>
+                            <li><a asp-controller="Post" asp-action="Create" asp-route-potraznja="0">Objavi Ponudu</a></li>
+                            <li><a asp-controller="Post" asp-action="Create" asp-route-potraznja="1">Objavi Potraznju</a></li>
                             <li><a asp-controller="Post" asp-action="Index">Pregled</a></li>
                         </ul>
                     </li>

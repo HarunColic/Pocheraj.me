@@ -1,3 +1,4 @@
+
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,15 +29,15 @@ namespace Pocherajme.Controllers
             return View("Index", model);
         }
         
-        public IActionResult Create()
+        public IActionResult Create(int potraznja)
         {
             if (!User.Identity.IsAuthenticated)
                 return Redirect("/Home");
 
+            ViewData["Potraznja"] = potraznja;
             //to do add view model for add
             List<TransportType> model = _TTRepo.GetAll();
-
-            return View("AddPost", model);
+                return View("AddPost", model);
         }
 
         [HttpPost]
@@ -99,7 +100,7 @@ namespace Pocherajme.Controllers
             post.TypeOfTransport = TT;
             post.CreatedAt = DateTime.Now;
             post.IsPotraznja = potraznja;
-
+            post.ApplicationUserID = int.Parse(_user.GetUserId(User));
             return _postRepo.Save(post);
         }
 
@@ -138,5 +139,17 @@ namespace Pocherajme.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult GetPostsByType(int type)
+        {
+
+            if(type == 0)
+            {
+                _postRepo.GetAllWithFilter()
+            }
+
+            return PartialView();
+        }
+        
     }
 }
