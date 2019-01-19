@@ -19,9 +19,11 @@ namespace Pocherajme.Repositories
         {
             return _db.Users.Include("City").FirstOrDefault(s=>s.Id == id);
         }
-        public void Save(ApplicationUser obj)
+        public ApplicationUser Save(ApplicationUser obj)
         {
-            throw new NotImplementedException();
+            _db.Update(obj);
+            _db.SaveChanges();
+            return obj;
         }
 
         public List<ApplicationUser> GetAll()
@@ -32,11 +34,6 @@ namespace Pocherajme.Repositories
         public bool Exists(ArrayList list)
         {
             throw new System.NotImplementedException();
-        }
-
-        ApplicationUser IRepository<ApplicationUser>.Save(ApplicationUser obj)
-        {
-            throw new NotImplementedException();
         }
 
         public List<ApplicationUser> GetAllWithFilter(ArrayList filters)
