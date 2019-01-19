@@ -4,29 +4,66 @@
     ViewData["Title"] = "Uredi profil";
 }
 
+<style>
+    form div{
+        margin:15px;
+    }
+</style>
 <hr />
 
-<div class="container">
-    <form class="form-group" action="/User/Edit" method="post">
-        @Html.AntiForgeryToken()
-        <label class="col-form-label" for="firstname">Ime</label>
-        <br />
-        <input type="text" name="firstname" value="@Model.FirstName" />
+<div class="container" style="justify-content:center;">
+<h1 style="text-align:center">Dorada profila</h1>
+    <div class="row" style="margin-top:50px;padding:0 25%">
+        <fieldset>
+            <form class="form-group" action="/User/Edit" method="post">
+                @Html.AntiForgeryToken()
+                <div class="col-md-12">
+                    <label class="col-form-label" for="firstname">Ime</label>
+                    <br />
+                    <input type="text" class="form-control" name="firstname" value="@Model.FirstName" required />
+                </div>
 
+                <div class="col-md-12">
+                    <label class="col-form-label" for="lastname">Prezime</label>
+                    <br />
+                    <input type="text" class="form-control" name="lastname" value="@Model.LastName" required />
+                </div>
 
-        <label class="col-form-label" for="firstname">Ime</label>
-        <br />
-        <input type="text" name="firstname" value="@Model.FirstName" />
+                <div class="col-md-12">
+                    <label class="col-form-label" for="address">Adresa</label>
+                    <br />
+                    <input type="text" class="form-control" name="address" value="@Model.Address" required />
+                </div>
 
+                <div class="col-md-12">
+                    <label class="col-form-label" for="phone">Broj telefona (+387)</label>
+                    <br />
+                    <input type="text" class="form-control" name="phone" value="@Model.PhoneNumber" required />
+                </div>
 
-        <label class="col-form-label" for="firstname">Ime</label>
-        <br />
-        <input type="text" name="firstname" value="@Model.FirstName" />
+                <div class="col-md-12">
+                    <label class="col-form-label" for="city">Grad</label>
+                    <br />
+                    <select name="city" class="form-control" required>
+                        @foreach (City c in Model.Cities)
+                        {
+                            @if (c.CityID == Model.CityID)
+                            {
+                                <option value="@c.CityID" selected>@c.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@c.CityID">@c.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
 
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-info form-control" name="submit" value="Pohrani" />
+                </div>
 
-        <label class="col-form-label" for="firstname">Ime</label>
-        <br />
-        <input type="text" name="firstname" value="@Model.FirstName" />
-    </form>
-
+            </form>
+        </fieldset>
+    </div>
 </div>

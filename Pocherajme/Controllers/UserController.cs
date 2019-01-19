@@ -21,10 +21,10 @@ namespace Pocherajme.Controllers
         public UserController(IRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager, IRepository<Post> postRepo, IRepository<City> cityRepo)
         {
             _postRepo = postRepo;
-            _userManager = userManager;    
+            _userManager = userManager;
             _userRepo = userRepository;
             _cityRepo = cityRepo;
-    }
+        }
         public IActionResult Index()
         {
             UserProfilVM model = new UserProfilVM();
@@ -53,8 +53,25 @@ namespace Pocherajme.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(IFormCollection colletion)
+        public IActionResult Edit(IFormCollection collection)
         {
+
+            try
+            {
+
+                ApplicationUser user = _userRepo.Get(int.Parse(_userManager.GetUserId(User)));
+                user.FirstName = collection["firstName"];
+                user.LastName = collection["lastName"];
+                user.PhoneNumber = collection["phone"];
+                user.Address = collection["address"];
+                user.CityID = int.Parse(collection["city"]);
+                _userRepo.Save(user);
+            }
+            catch
+            {
+                return Redirect("/Home/Error");
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
