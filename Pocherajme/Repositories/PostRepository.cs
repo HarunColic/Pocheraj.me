@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pocherajme.Repositories
 {
-    public class PostRepository:IRepository<Post>
+    public class PostRepository: IRepository<Post>
     {
         private ApplicationDbContext _db;
         public PostRepository(ApplicationDbContext db)

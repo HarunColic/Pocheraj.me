@@ -7,11 +7,16 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello @UserManager.GetUserName(User)  <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a asp-controller="User" asp-action="Index">Profil</a></li>
+                    <li><a asp-controller="User" asp-action="Edit">Postavke</a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Dodatne postavke</a></li>
+                </ul>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Odjava</button>
             </li>
         </ul>
     </form>
