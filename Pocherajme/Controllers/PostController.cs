@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pocherajme.Models;
 using Pocherajme.Repositories;
 using System;
+using System.Collections.Generic;
 
 namespace Pocherajme.Controllers
 {
@@ -17,50 +19,53 @@ namespace Pocherajme.Controllers
         }
         public IActionResult Index()
         {
-            ViewData["Posts"] = _postRepo.GetAll();
-            return View();
+            List<Post> model = _postRepo.GetAll();
+            return View("Index", model);
         }
 
         public IActionResult AddPost()
         {
             if (!User.Identity.IsAuthenticated)
-                return Redirect("/home");
+                return Redirect("/Home");
 
+            //to do add view model for add
             ViewData["TransportTypes"] = _TTRepo.GetAll();
             return View("AddPost");
         }
 
-        public IActionResult SavePost(string title, string description, string to, string from, 
-            DateTime DateOfDeparture, string TimeOfDeparture, int MaxPassengers, float price, int ETA, string car, int TransportType)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SavePost(IFormCollection collection)
         {
-
-            TransportType TT = _TTRepo.Get(TransportType);
-
-            string [] time = TimeOfDeparture.Split(":");
-
-            int hour = int.Parse(time[0]);
-            int minute = int.Parse(time[1]);
-
-            DateTime DateTimeDep = new DateTime(DateOfDeparture.Year, DateOfDeparture.Month, DateOfDeparture.Day, hour, minute, 0);
-
-            Post post = new Post();
-
-            post.Title = title;
-            post.Description = description;
-            post.To = to;
-            post.From = from;
-            post.DateTimeOfDeparture = DateTimeDep;
-            post.MaxPassengers = MaxPassengers;
-            post.Price = price;
-            post.EstimatedTravelTime = ETA;
-            post.Car = car;
-            post.TransportTypeID = TransportType;
-            post.TypeOfTransport = TT;
-            post.CreatedAt = DateTime.Now;
-
-            _postRepo.Save(post);
-
-            return Redirect("/Post/AddPost");
+            try
+            {
+                TransportType TT = _TTRepo.Get(int.Parse(collection["TransportType"]));
+                string[] time = collection["TimeOfDeparture"].ToString().Split(":");
+                int hour = int.Parse(time[0]);
+                int minute = int.Parse(time[1]);
+                DateTime dateOfd = DateTime.Parse(collection["DateOfDeparture"]);
+                DateTime DateTimeDep = new DateTime(dateOfd.Year, dateOfd.Month, dateOfd.Day, hour, minute, 0);
+                Post post = new Post();
+                post.Title = collection["title"];
+                post.Description = collection["description"];
+                post.To = collection["to"];
+                post.From = collection["from"];
+                post.DateTimeOfDeparture = DateTimeDep;
+                post.MaxPassengers = int.Parse(collection["MaxPassengers"]);
+                post.Price = float.Parse(collection["price"]);
+                post.EstimatedTravelTime = int.Parse(collection["ETA"]);
+                post.Car = collection["car"];
+                post.TransportTypeID = TT.TransportTypeID;
+                post.TypeOfTransport = TT;
+                post.CreatedAt = DateTime.Now;
+                post.IsPotraznja = false;
+                _postRepo.Save(post);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                return Redirect("/Home/Error");
+            }
         }
     }
 }

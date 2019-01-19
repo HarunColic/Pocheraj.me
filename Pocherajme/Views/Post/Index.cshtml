@@ -1,31 +1,40 @@
 ﻿@using Pocherajme.Models
 @{
-    ViewData["Title"] = "Apply for post";
-    var posts = (List<Post>)ViewData["Posts"];
+    ViewData["Title"] = "Prikaz i prijava prevoza";
 }
-<h2>Apply for Post</h2>
-<div class="container" style="padding: 0 25% 0 25%;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">From</th>
-                <th scope="col">To</th>
-                <th scope="col">Time of departure</th>
-                <th scope="col">Apply</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in posts)
-            {
-            <tr>
-                <th scope="row">@item.Title</th>
-                <td>@item.From</td>
-                <td>@item.To</td>
-                <td>@item.DateTimeOfDeparture</td>
-                <td><a href="/Post/Apply/@item.PostID" class="btn btn-default">Apply</a></td>
-            </tr>
-            }
-        </tbody>
-    </table>
+
+@model List<Pocherajme.Models.Post>
+<div class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
+    @if (Model.Count == 0)
+    {
+        <h1>Trenutno nema prevoza</h1>
+    }
+    else
+    {
+
+        <h2>Prijavi oglas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Naslov</th>
+                    <th scope="col">OD</th>
+                    <th scope="col">DO</th>
+                    <th scope="col">Vrijeme polaska</th>
+                    <th scope="col">Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Title</th>
+                        <td>@item.From</td>
+                        <td>@item.To</td>
+                        <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
+                        <td><a href="/Post/Apply/@item.PostID" class="btn btn-default">Prijavi</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
