@@ -1,18 +1,8 @@
 ﻿
-@{
-    ViewData["Title"] = "PostsByType";
-
-}
 @model List<Pocherajme.Models.Post>
-<div class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
-    @if (Model.Count == 0)
-    {
-        <h1>Trenutno nema prevoza</h1>
-    }
-    else
-    {
 
-        <h2>Prijavi oglas</h2>
+
+
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +16,9 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    
+                    <tr class="@nameof(item.IsPotraznja)@item.IsPotraznja">
+                    
                         <th scope="row">@item.Title</th>
                         <td>@item.From</td>
                         <td>@item.To</td>
@@ -43,4 +35,15 @@
             </tbody>
         </table>
     }
-</div>
+
+<style>
+
+    .IsPotraznjaFalse {
+       background-color: darkgray;
+    }
+
+    .IsPotraznjaTrue {
+        background-color: lightgray;
+    }
+
+</style>

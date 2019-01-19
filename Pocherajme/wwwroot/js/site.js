@@ -116,5 +116,58 @@ $.fn.pageMe = function (opts) {
     }
 };
 
+
+$(document).ready(function () {
+
+    var type;
+
+
+    function MakeAjax(typeId) {
+        $.ajax({
+            type: "get",
+            url: "/Post/GetPostsByType/?type="+typeId,
+            dataType: "html",
+            cache: false,
+            success: function (e) {
+                $("#Posts").html(e);
+            },
+            error: function (e) {
+
+                console.log(e.target.value);
+            }
+        });
+    }
+    $("#ponuda").click(function () {
+
+        if ($("#ponuda").is(":checked") && $("#potraznja").is(":checked"))
+            type = 3;
+        else if ($("#ponuda").is(":not(:checked)") && $("#potraznja").is(":not(:checked)"))
+            type = 3;
+        else if ($("#ponuda").is(":checked")){
+            type = 1;
+        }
+        else if ($("#potraznja").is(":checked")) {
+            type = 0;
+        }
+        MakeAjax(type);
+    })
+
+    $("#potraznja").click(function () {
+
+        if ($("#ponuda").is(":checked") && $("#potraznja").is(":checked"))
+            type = 3;
+        else if ($("#ponuda").is(":not(:checked)") && $("#potraznja").is(":not(:checked)"))
+            type = 3;
+        else if ($("#potraznja").is(":checked")) {
+            type = 0;
+        }
+        else if ($("#ponuda").is(":checked")) {
+            type = 1;
+        }
+        MakeAjax(type);
+    })
+
+});
+
 $('#items').pageMe({ pagerSelector: '#myPager', childSelector: 'tr', showPrevNext: true, hidePageNumbers: false, perPage: 5 });
 /****/

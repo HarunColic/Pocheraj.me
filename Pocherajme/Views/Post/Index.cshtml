@@ -6,50 +6,67 @@
 @model List<Pocherajme.Models.Post>
 
 
-<div id="Posts" class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
+<div class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
 
 
-    <div>
-        <label class="form-check-label" >Potraznja</label>
-        <input type="checkbox" name="potraznja" value="1" />
-        <label class="form-check-label">Ponuda</label>
-        <input type="checkbox" name="ponuda" value="0" />
-    </div>
-               @if (Model.Count == 0) {
+    @if (Model.Count == 0)
+    {
         <h1>Trenutno nema prevoza</h1>
     }
     else
     {
 
         <h2>Prijavi oglas</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Naslov</th>
-                    <th scope="col">OD</th>
-                    <th scope="col">DO</th>
-                    <th scope="col">Vrijeme polaska</th>
-                    <th scope="col">Akcije</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+
+        <div>
+            <label style="background-color: lightgray;" class="form-check-label">Potraznja</label>
+            <input autocomplete="off" id="potraznja" type="checkbox" name="potraznja" value="1" />
+            <label style="background-color: darkgray;" class="form-check-label">Ponuda</label>
+            <input autocomplete="off" id="ponuda" type="checkbox" name="ponuda" value="0" />
+        </div>
+        <div id="Posts">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">@item.Title</th>
-                        <td>@item.From</td>
-                        <td>@item.To</td>
-                        <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
-
-                        <form method="post" action="/Post/Apply/@item.PostID">
-                            @Html.AntiForgeryToken()
-                            <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
-                        </form>
-
-                        <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                        <th scope="col">Naslov</th>
+                        <th scope="col">OD</th>
+                        <th scope="col">DO</th>
+                        <th scope="col">Vrijeme polaska</th>
+                        <th scope="col">Akcije</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@nameof(item.IsPotraznja)@item.IsPotraznja">
+                            <th scope="row">@item.Title</th>
+                            <td>@item.From</td>
+                            <td>@item.To</td>
+                            <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
+
+                            <form method="post" action="/Post/Apply/@item.PostID">
+                                @Html.AntiForgeryToken()
+                                <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
+                            </form>
+
+                            <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
     }
 </div>
+
+<style>
+
+    .IsPotraznjaFalse {
+        background-color: darkgray;
+    }
+
+    .IsPotraznjaTrue {
+        background-color: lightgray;
+    }
+
+</style>
