@@ -124,7 +124,7 @@ namespace Pocherajme.Controllers
             lista.Add(id);
             lista.Add(int.Parse(_user.GetUserId(User)));
 
-            if (!_applicationRepo.Exists(lista))
+            if (_applicationRepo.Exists(lista))
                 return Redirect("/Home");
 
             Application aplikacija = new Application();

@@ -37,5 +37,7 @@
     <label class="form-control">@Model.TypeOfTransport.Type</label>
 
 </div>
-
-<input class="btn btn-default" type="button" onclick="location.href='/Post/Apply/@Model.PostID'" value="Prijavi" />
+<form method="post" action="/Post/Apply/@Model.PostID">
+    @Html.AntiForgeryToken()
+    <input class="btn btn-default" type="submit" value="Prijavi" />
+</form>

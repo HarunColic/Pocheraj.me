@@ -38,7 +38,11 @@ namespace Pocherajme.Repositories
 
         public bool Exists(ArrayList list)
         {
-            var model = _db.Applications.FirstOrDefault(s => s.UserID == list.IndexOf(1) && s.PostID == list.IndexOf(0));
+
+            int userID = int.Parse(list[1].ToString());
+            int postID = int.Parse(list[0].ToString());
+
+            var model = _db.Applications.FirstOrDefault(s => s.UserID == userID && s.PostID == postID);
 
             if (model != null)
                 return true;
