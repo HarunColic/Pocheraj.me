@@ -23,8 +23,7 @@ namespace Pocherajme.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=localhost;Database=pocherajme;Trusted_Connection=True;MultipleActiveResultSets=true;User ID=cola;Password=sifra123");
-            optionsBuilder.UseSqlServer("Server = tcp:pocheraj.database.windows.net,1433; Initial Catalog = pocherajme; Persist Security Info = False; User ID = pocheras; Password = Klinka123$; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
+            optionsBuilder.UseSqlServer("Server=.;Database=pocherajme;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
     }
 }

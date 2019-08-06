@@ -7,7 +7,7 @@ using Pocherajme.Repositories;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace Pocherajme.Controllers
 {
     public class PostController : Controller
@@ -55,7 +55,6 @@ namespace Pocherajme.Controllers
                 return Redirect("/Home/Error");
             }
 
-            return View();
         }
 
 
@@ -108,9 +107,30 @@ namespace Pocherajme.Controllers
         {
 
             var model = _postRepo.Get(id);
-
+            
             return View("ShowPost", model);
         }
+
+
+        public IActionResult Search(string title, string start, string destination, float price)
+        {
+
+            var model = _postRepo.GetAll();
+            if (String.IsNullOrEmpty(title) == false)
+                model = model.Where(x => x.Title == title).ToList();
+
+            if (String.IsNullOrEmpty(start) == false)
+                model = model.Where(x => x.From == start).ToList();
+
+            if (String.IsNullOrEmpty(destination) == false)
+                model = model.Where(x => x.To == destination).ToList();
+
+            if (price > 0)
+                model = model.Where(x => x.Price >= price).ToList();
+
+            return View("Index", model);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

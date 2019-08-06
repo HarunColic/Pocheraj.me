@@ -13,5 +13,6 @@ namespace Pocherajme.Repositories
         List<T> GetAll();
         List<T> GetAllWithFilter(ArrayList filters);
         bool Exists(ArrayList list);
+
     }
 }
