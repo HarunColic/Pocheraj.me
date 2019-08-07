@@ -1,12 +1,26 @@
 ﻿@using Pocherajme.Models
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
 @{
     ViewData["Title"] = "Prikaz i prijava prevoza";
+    var userId = SignInManager.IsSignedIn(User) ? int.Parse(UserManager.GetUserId(User)) : 0;
 }
 
 @model List<Pocherajme.Models.Post>
 
+<style>
+    #header {
+        position: relative;
+    }
 
-<div class="container" style="text-align:center;padding: 30px 25% 30px 25%;">
+    #Posts, td, td * {
+        color: black !important;
+    }
+</style>
+
+<div class="container" style="text-align:center;padding: 60px 25% 30px 25%;">
 
 
     @if (Model.Count == 0)
@@ -18,21 +32,22 @@
 
         <h2>Prijavi oglas</h2>
 
-        <div>
-            <label style="background-color: lightgray;" class="form-check-label">Potraznja</label>
+        <div style="text-align:justify; margin:20px">
             <input autocomplete="off" id="potraznja" type="checkbox" name="potraznja" value="1" />
+            <label style="background-color: lightgray;" class="form-check-label">Potraznja</label>
+            <input style="margin-left:20px;" autocomplete="off" id="ponuda" type="checkbox" name="ponuda" value="0" />
             <label style="background-color: darkgray;" class="form-check-label">Ponuda</label>
-            <input autocomplete="off" id="ponuda" type="checkbox" name="ponuda" value="0" />
         </div>
         <div id="Posts">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Naslov</th>
-                        <th scope="col">OD</th>
-                        <th scope="col">DO</th>
+                        <th scope="col">Polazak</th>
+                        <th scope="col">Destinacija</th>
                         <th scope="col">Vrijeme polaska</th>
                         <th scope="col">Akcije</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,14 +57,23 @@
                             <th scope="row">@item.Title</th>
                             <td>@item.From</td>
                             <td>@item.To</td>
-                            <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
+                            <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:mm")</td>
 
-                            <form method="post" action="/Post/Apply/@item.PostID">
-                                @Html.AntiForgeryToken()
-                                <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
-                            </form>
+                            @if (SignInManager.IsSignedIn(User) && item.ApplicationUserID != userId)
+                            {
+                                <form method="post" action="/Post/Apply/@item.PostID">
+                                    @Html.AntiForgeryToken()
+                                    <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
+                                </form>
+                            }
+                            else
+                            {
+                                <form>
+                                    <td><input type="button" class="btn btn-default" value="Prijavi" disabled /></td>
+                                </form>
+                            }
 
-                            <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                            <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default" style="border: 1px solid black;">Pregled</a></td>
                         </tr>
                     }
                 </tbody>
@@ -68,5 +92,4 @@
     .IsPotraznjaTrue {
         background-color: lightgray;
     }
-
 </style>

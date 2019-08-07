@@ -1,49 +1,65 @@
 ﻿
+@using Pocherajme.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @model List<Pocherajme.Models.Post>
 
+@{
+    ViewData["Title"] = "ShowPost";
+    var userId = SignInManager.IsSignedIn(User) ? int.Parse(UserManager.GetUserId(User)) : 0;
+}
 
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Naslov</th>
-                    <th scope="col">OD</th>
-                    <th scope="col">DO</th>
-                    <th scope="col">Vrijeme polaska</th>
-                    <th scope="col">Akcije</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Naslov</th>
+            <th scope="col">Polazak</th>
+            <th scope="col">Destinacija</th>
+            <th scope="col">Vrijeme polaska</th>
+            <th scope="col">Akcije</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+        <tr class="@nameof(item.IsPotraznja)@item.IsPotraznja">
+            <th scope="row">@item.Title</th>
+            <td>@item.From</td>
+            <td>@item.To</td>
+            <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:mm")</td>
+
+                @if (SignInManager.IsSignedIn(User) && item.ApplicationUserID != userId)
                 {
-                    
-                    <tr class="@nameof(item.IsPotraznja)@item.IsPotraznja">
-                    
-                        <th scope="row">@item.Title</th>
-                        <td>@item.From</td>
-                        <td>@item.To</td>
-                        <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. hh:ii")</td>
-
-                        <form method="post" action="/Post/Apply/@item.PostID">
-                            @Html.AntiForgeryToken()
-                            <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
-                        </form>
-
-                        <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
-                    </tr>
+                    <form method="post" action="/Post/Apply/@item.PostID">
+                        @Html.AntiForgeryToken()
+                        <td><input type="submit" class="btn btn-default" value="Prijavi" /></td>
+                    </form>
                 }
-            </tbody>
-        </table>
-    }
+                else
+                {
+                    <form>
+                        <td><input type="button" class="btn btn-default" value="Prijavi" disabled /></td>
+                    </form>
+                }
+
+            <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default" style="border: 1px solid black;">Pregled</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
 
 <style>
 
     .IsPotraznjaFalse {
-       background-color: darkgray;
+        background-color: darkgray;
     }
 
     .IsPotraznjaTrue {
         background-color: lightgray;
     }
-
 </style>

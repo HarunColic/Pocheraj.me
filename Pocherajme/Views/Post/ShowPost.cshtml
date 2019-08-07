@@ -1,43 +1,61 @@
 ﻿@using Pocherajme.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "ShowPost";
+    var userId = SignInManager.IsSignedIn(User) ? int.Parse(UserManager.GetUserId(User)) : 0;
 }
 @model Post
 
 <div class="container" style="justify-content: center; padding-left: 25%; padding-right: 25%;">
 
-    <h2 style="text-align: center; padding-bottom: 80px;" >ShowPost</h2>
+    <h2 style="text-align: center; padding-bottom: 80px;">ShowPost</h2>
 
 
-    <label class="form-check-label">Title</label>
+    <label class="form-check-label">Naziv</label>
     <label class="form-control">@Model.Title</label>
 
-    <label class="form-check-label">Description</label>
+    <label class="form-check-label">Opis</label>
     <label class="form-control">@Model.Description</label>
 
-    <label class="form-check-label">Destination</label>
+    <label class="form-check-label">Polazište</label>
     <label class="form-control">@Model.To</label>
 
-    <label class="form-check-label">Departure</label>
+    <label class="form-check-label">Odredište</label>
     <label class="form-control">@Model.From</label>
 
-    <label class="form-check-label">Date and Time of Departure</label>
+    <label class="form-check-label">Datum i vrijeme polaska</label>
     <label class="form-control">@Model.DateTimeOfDeparture</label>
 
-    <label class="form-check-label">Number of Passengers</label>
+    <label class="form-check-label">Maksimalno suputnika</label>
     <label class="form-control">@Model.MaxPassengers</label>
 
-    <label class="form-check-label">Estimated Time of Travel</label>
+    <label class="form-check-label">Vrijeme trajanja putovanja</label>
     <label class="form-control">@Model.EstimatedTravelTime</label>
 
-    <label class="form-check-label">Car (Make and Model)</label>
+    <label class="form-check-label">Prevozno sredstvo</label>
     <label class="form-control">@Model.Title</label>
 
-    <label class="form-check-label">Type of Transport</label>
+    <label class="form-check-label">Vrsta prevoza</label>
     <label class="form-control">@Model.TypeOfTransport.Type</label>
 
 </div>
-<form method="post" action="/Post/Apply/@Model.PostID">
-    @Html.AntiForgeryToken()
-    <input class="btn btn-default" type="submit" value="Prijavi" />
-</form>
+<div class="row" style="padding: 20px">
+    <div class="col-md-6">
+        <div>
+            <a href="/Post/Index" class="btn btn-outline-dark">Nazad</a>
+        </div>
+    </div>
+
+    <div class="col-md-6" style="text-align:right;">
+        @if (SignInManager.IsSignedIn(User) && Model.ApplicationUserID != userId)
+        {
+            <form method="post" action="/Post/Apply/@Model.PostID">
+                @Html.AntiForgeryToken()
+                <input class="btn btn-default" type="submit" value="Prijavi" />
+            </form>
+        }
+    </div>
+</div>
