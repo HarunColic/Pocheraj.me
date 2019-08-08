@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAThdesBbW80K4U7X4EIe7AwAAAAACAAAAAAAQZgAAAAEAACAAAABM53mtBFaOOwvYK/owHEIkQZ0ci0cX3oete9CgNY6u5QAAAAAOgAAAAAIAACAAAAA4HQ6Fpy8mH+ZbScZe530+Ofazm/v8dUYtayVwQCGHZhAAAACBzj+zsf88Z9TtnQFCShevQAAAALbBd8jlfP4hrG7KvrpeXz96/3K0qG4HROHBiMqvnek/HaxO/lu3qgJ3Mep8HtIdnD8fDccDNbylWJK5ZfYxafQ=</EncryptedPassword>
+    <_PublishTargetUrl>ftp://p1829.app.fit.ba/httpdocs</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>08/08/2019 02:51:29</publishTime>
+    </File>
+    <File Include="Pocherajme.deps.json">
+      <publishTime>08/08/2019 02:52:14</publishTime>
+    </File>
+    <File Include="Pocherajme.dll">
+      <publishTime>08/08/2019 02:50:56</publishTime>
+    </File>
+    <File Include="Pocherajme.pdb">
+      <publishTime>08/08/2019 02:50:56</publishTime>
+    </File>
+    <File Include="Pocherajme.runtimeconfig.json">
+      <publishTime>08/08/2019 02:52:14</publishTime>
+    </File>
+    <File Include="Pocherajme.Views.dll">
+      <publishTime>08/08/2019 02:50:58</publishTime>
+    </File>
+    <File Include="Pocherajme.Views.pdb">
+      <publishTime>08/08/2019 02:50:58</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>08/08/2019 02:52:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/.DS_Store">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/animate.min.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap.map">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap/bootstrap-grid.css">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap/bootstrap-reboot.css">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/css/bootstrap/bootstrap.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/font-awesome.min.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/jquery-ui.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/linearicons.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/magnific-popup.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/main.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/main.map">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/nice-select.css">
+      <publishTime>08/06/2019 01:32:14</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/fontawesome-webfont.eot">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/fontawesome-webfont.svg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/fontawesome-webfont.ttf">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/fontawesome-webfont.woff">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/fontawesome-webfont.woff2">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/FontAwesome.otf">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/Linearicons-Free.eot">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/Linearicons-Free.svg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/Linearicons-Free.ttf">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/Linearicons-Free.woff">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/fonts/Linearicons-Free.woff2">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner1.svg">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner2.svg">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner3.svg">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/img/.DS_Store">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/about-img.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/b1.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/b2.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/.DS_Store">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/ads-banner.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/blog-home-banner.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c1.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c2.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c3.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c4.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c5.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/c6.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/cat-widget1.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/cat-widget2.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/cat-widget3.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/feature-img1.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/feature-img2.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/feature-img3.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/feature-img4.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/feature-img5.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/next.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/post-img1.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/post-img2.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/pp1.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/pp2.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/pp3.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/pp4.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/prev.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/s-img.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/blog/user-info.png">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/call-action-bg.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/a.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/a2.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/d.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/disabled-check.png">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/disabled-radio.png">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f1.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f2.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f3.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f4.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f5.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f6.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f7.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/f8.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g1.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g2.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g3.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g4.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g5.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g6.jpg">
+      <publishTime>08/06/2019 01:32:17</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g7.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/g8.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/primary-check.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/primary-radio.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/success-check.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/success-radio.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/t1.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/t2.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/t3.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/t4.jpg">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/user1.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/elements/user2.png">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/footer-bottom.png">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/g1.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/g2.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/g3.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/g4.jpg">
+      <publishTime>08/06/2019 01:32:15</publishTime>
+    </File>
+    <File Include="wwwroot/img/g5.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/g6.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/header-bg.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/logo.png">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/menu-top.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/menu-top.png">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/top-banner.jpg">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/img/ui-icons_444444_256x240.png">
+      <publishTime>08/06/2019 01:32:16</publishTime>
+    </File>
+    <File Include="wwwroot/js/.DS_Store">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/easing.min.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/hoverIntent.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/jquery-ui.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/jquery.ajaxchimp.min.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/jquery.magnific-popup.min.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/jquery.nice-select.min.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/mail-script.js">
+      <publishTime>08/06/2019 01:32:18</publishTime>
+    </File>
+    <File Include="wwwroot/js/main.js">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/js/superfish.min.js">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/js/vendor/bootstrap.min.js">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/js/vendor/jquery-2.2.4.min.js">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/lib/.gitignore">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/.bower.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-sandstone.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/modern-business.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/npm.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap-grid.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap-grid.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap-reboot.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap-reboot.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/css/bootstrap.min.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.bundle.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.bundle.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.bundle.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.bundle.min.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/bootstrap/js/bootstrap.min.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.min.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.slim.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.slim.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/vendor/jquery/jquery.slim.min.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/LICENSE">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bower.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/index-svg.html">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/index.html">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/index.svg">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/.bower.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/.bower.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/.bower.json">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/LICENSE">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/qrcode.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/qrcode.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/README.md">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/scss/.DS_Store">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/.DS_Store">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/bootstrap-grid.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/bootstrap-reboot.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/bootstrap.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_alert.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_background-variant.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_badge.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_border-radius.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_box-shadow.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_breakpoints.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_buttons.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_caret.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_clearfix.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_float.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_forms.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_gradients.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_grid-framework.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_grid.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_hover.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_image.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_list-group.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_lists.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_nav-divider.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_navbar-align.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_pagination.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_reset-text.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_resize.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_screen-reader.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_size.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_table-row.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_text-emphasis.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_text-hide.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_text-truncate.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_transition.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/mixins/_visibility.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_align.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_background.scss">
+      <publishTime>08/06/2019 01:32:21</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_borders.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_clearfix.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_display.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_embed.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_flex.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_float.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_position.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_screenreaders.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_sizing.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_spacing.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_text.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/utilities/_visibility.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_alert.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_badge.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_breadcrumb.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_button-group.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_buttons.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_card.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_carousel.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_close.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_code.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_custom-forms.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_dropdown.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_forms.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_functions.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_grid.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_images.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_input-group.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_jumbotron.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_list-group.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_media.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_mixins.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_modal.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_nav.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_navbar.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_pagination.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_popover.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_print.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_progress.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_reboot.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_root.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_tables.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_tooltip.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_transitions.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_type.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_utilities.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/bootstrap/_variables.scss">
+      <publishTime>08/06/2019 01:32:20</publishTime>
+    </File>
+    <File Include="wwwroot/scss/main.scss">
+      <publishTime>08/06/2019 01:32:19</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/.DS_Store">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_blog.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_contact.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_elements.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_flexbox.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_footer.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_header.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_home.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_mixins.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_reset.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/scss/theme/_variables.scss">
+      <publishTime>08/06/2019 01:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap-grid.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap-grid.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap-reboot.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap-reboot.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap.min.css">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/css/bootstrap.min.css.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.bundle.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.bundle.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.bundle.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.bundle.min.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/bootstrap/js/bootstrap.min.js.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.min.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.slim.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.slim.min.js">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+    <File Include="wwwroot/vendor/jquery/jquery.slim.min.map">
+      <publishTime>08/06/2019 00:52:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

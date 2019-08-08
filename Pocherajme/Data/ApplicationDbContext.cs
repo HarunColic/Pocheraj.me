@@ -23,7 +23,7 @@ namespace Pocherajme.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=pocherajme;Trusted_Connection=True;MultipleActiveResultSets=true");
+            //optionsBuilder.UseSqlServer("Data Source=195.222.54.107\\sql2016;Integrated Security=True;Initial Catalog=pocherajme;User ID=p1829;Password=mV3RgtGGG");
         }
     }
 }
