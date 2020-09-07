@@ -11,5 +11,7 @@ namespace Pocherajme.ViewModels
         public ApplicationUser User { get; set; }
         public List<Post> Potraznje { get; set; }
         public List<Post> Ponude { get; set; }
+        public List<Post> Aplicirani { get; set; }
+        public float Ocjena { get; set; }
     }
 }

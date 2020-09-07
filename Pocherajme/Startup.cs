@@ -54,6 +54,7 @@ namespace Pocherajme
             services.AddScoped<IRepository<ApplicationUser>, UserRepository>();
             services.AddScoped<IRepository<Application>, ApplicationRepository>();
             services.AddScoped<IRepository<City>, CityRepository>();
+            services.AddScoped<IRepository<Rating>, RatingsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

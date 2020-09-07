@@ -30,7 +30,20 @@ namespace Pocherajme.Repositories
 
         public Application Save(Application obj)
         {
-            _db.Applications.Add(obj);
+            ArrayList lista = new ArrayList();
+
+            lista.Add(obj.PostID);
+            lista.Add(obj.UserID);
+
+
+            if (this.Exists(lista))
+            {
+                _db.Applications.Update(obj);
+            }
+            else {
+                _db.Applications.Add(obj);
+            }
+
             _db.SaveChanges();
 
             return obj;
@@ -53,7 +66,9 @@ namespace Pocherajme.Repositories
 
         public List<Application> GetAllWithFilter(ArrayList filters)
         {
-            throw new NotImplementedException();
+            int postID = int.Parse(filters[0].ToString());
+
+            return _db.Applications.Where(x => x.PostID == postID).Include("User").Include("Post").ToList();
         }
     }
 }

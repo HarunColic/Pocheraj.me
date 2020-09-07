@@ -16,14 +16,16 @@ namespace Pocherajme.Controllers
     {
         UserManager<ApplicationUser> _userManager;
         IRepository<ApplicationUser> _userRepo;
+        IRepository<Rating> _ratingsRepo;
         IRepository<City> _cityRepo;
         IRepository<Post> _postRepo;
-        public UserController(IRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager, IRepository<Post> postRepo, IRepository<City> cityRepo)
+        public UserController(IRepository<Rating> ratingsRepo, IRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager, IRepository<Post> postRepo, IRepository<City> cityRepo)
         {
             _postRepo = postRepo;
             _userManager = userManager;
             _userRepo = userRepository;
             _cityRepo = cityRepo;
+            _ratingsRepo = ratingsRepo;
         }
         public IActionResult Index()
         {
@@ -32,9 +34,37 @@ namespace Pocherajme.Controllers
             ArrayList arr = new ArrayList();
             arr.Add(1);
             arr.Add(_userManager.GetUserId(User));
+           
             model.Ponude = _postRepo.GetAllWithFilter(arr);
             arr.Insert(0, 0);
             model.Potraznje = _postRepo.GetAllWithFilter(arr);
+
+            ArrayList list = new ArrayList();
+            list.Add(3);
+            list.Add(_userManager.GetUserId(User));
+
+            model.Aplicirani = _postRepo.GetAllWithFilter(list);
+
+            ArrayList lista = new ArrayList();
+
+            lista.Add(int.Parse(_userManager.GetUserId(User)));
+
+            var ratings = new List<Rating>();
+
+            ratings = _ratingsRepo.GetAllWithFilter(lista);
+
+            float sumaOcjena = 0;
+
+            foreach(var r in ratings)
+            {
+                sumaOcjena += r.RatingValue;
+            }
+
+            if (ratings.Count() > 0)
+                model.Ocjena = sumaOcjena / ratings.Count();
+            else
+                model.Ocjena = 0;
+
             return View("Index", model);
         }
 

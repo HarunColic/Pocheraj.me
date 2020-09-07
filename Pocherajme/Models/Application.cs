@@ -8,7 +8,15 @@ using System.Threading.Tasks;
 namespace Pocherajme.Models
 {
     public class Application 
-    {
+    {   
+        public void changeState()
+        {
+            if (Accepted)
+                Accepted = false;
+            else
+                Accepted = true;
+        }
+
         [Key]
         public int ApplicationID { get; set; }
         [ForeignKey("User")]
@@ -19,5 +27,6 @@ namespace Pocherajme.Models
         public Post Post { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool Accepted { get; set; }
     }
 }

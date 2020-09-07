@@ -1,4 +1,4 @@
-﻿@using Pocherajme.Models
+﻿@using Pocherajme.ViewModels
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -7,7 +7,7 @@
     ViewData["Title"] = "ShowPost";
     var userId = SignInManager.IsSignedIn(User) ? int.Parse(UserManager.GetUserId(User)) : 0;
 }
-@model Post
+@model ShowPost
 
 <div class="container" style="justify-content: center; padding-left: 25%; padding-right: 25%;">
 
@@ -15,31 +15,31 @@
 
 
     <label class="form-check-label">Naziv</label>
-    <label class="form-control">@Model.Title</label>
+    <label class="form-control">@Model.Post.Title</label>
 
     <label class="form-check-label">Opis</label>
-    <label class="form-control">@Model.Description</label>
+    <label class="form-control">@Model.Post.Description</label>
 
     <label class="form-check-label">Polazište</label>
-    <label class="form-control">@Model.To</label>
+    <label class="form-control">@Model.Post.To</label>
 
     <label class="form-check-label">Odredište</label>
-    <label class="form-control">@Model.From</label>
+    <label class="form-control">@Model.Post.From</label>
 
     <label class="form-check-label">Datum i vrijeme polaska</label>
-    <label class="form-control">@Model.DateTimeOfDeparture</label>
+    <label class="form-control">@Model.Post.DateTimeOfDeparture</label>
 
     <label class="form-check-label">Maksimalno suputnika</label>
-    <label class="form-control">@Model.MaxPassengers</label>
+    <label class="form-control">@Model.Post.MaxPassengers</label>
 
     <label class="form-check-label">Vrijeme trajanja putovanja</label>
-    <label class="form-control">@Model.EstimatedTravelTime</label>
+    <label class="form-control">@Model.Post.EstimatedTravelTime</label>
 
     <label class="form-check-label">Prevozno sredstvo</label>
-    <label class="form-control">@Model.Title</label>
+    <label class="form-control">@Model.Post.Title</label>
 
     <label class="form-check-label">Vrsta prevoza</label>
-    <label class="form-control">@Model.TypeOfTransport.Type</label>
+    <label class="form-control">@Model.Post.TypeOfTransport.Type</label>
 
 </div>
 <div class="row" style="padding: 20px">
@@ -47,15 +47,87 @@
         <div>
             <a href="/Post/Index" class="btn btn-outline-dark">Nazad</a>
         </div>
+        @if (!Model.Post.Completed && Model.Post.ApplicationUserID == userId)
+        {
+            <div>
+                <a style="margin-top:30px;" href="/Post/Complete?PostID=@Model.Post.PostID" class="btn btn-outline-dark">Zavrsi voznju</a>
+            </div>
+        }
     </div>
 
     <div class="col-md-6" style="text-align:right;">
-        @if (SignInManager.IsSignedIn(User) && Model.ApplicationUserID != userId)
+        @if (SignInManager.IsSignedIn(User) && Model.Post.ApplicationUserID != userId && !Model.Accepted)
         {
-            <form method="post" action="/Post/Apply/@Model.PostID">
+            <form method="post" action="/Post/Apply/@Model.Post.PostID">
                 @Html.AntiForgeryToken()
                 <input class="btn btn-default" type="submit" value="Prijavi" />
             </form>
+        }
+        @if (Model.Post.ApplicationUserID == userId)
+        {
+
+            <h2 style="text-align: center; margin: 30px; ">Prijave</h2>
+
+            @foreach (var item in Model.Applications)
+            {
+                <div style="background-color: #F8D700; opacity: 0.7; margin: 20px; padding: 10px; border-radius: 20px; border-style: solid; border-width:2px;">
+
+                    <label style="float: left; font-size:large; color:black; ">@item.User.Email</label>
+
+                    @if (item.Accepted)
+                    {
+                        <label>Prihvaceno</label>
+                    }
+                    else
+                    {
+                        <button class="btn btn-outline-dark" onclick="location.href='/Post/Accept?apid=@item.ApplicationID'">Prihvati</button>
+                    }
+                </div>
+            }
+
+        }
+        @if (Model.Accepted && Model.Post.Completed)
+        {
+            @if (Model.Ocjena == null)
+            {
+                <div style="margin-top: 100px;">
+                    <form method="post" action="/Post/Rate?PostID=@Model.Post.PostID">
+                        @Html.AntiForgeryToken()
+                        <h2>Ocijeni Voznju</h2>
+                        <br />
+                        <label>ocjena (1-5)</label>
+                        <br />
+                        <input name="ocjena" type="range" min="1" max="5" value="3" class="slider" />
+                        <br />
+                        <label style="margin-top:30px;">Vas komentar</label>
+                        <br />
+
+                        <textarea style=" height:80px; width:300px;" name="description"></textarea>
+
+                        <br />
+                        <input class="btn btn-outline-dark" style="margin-top:30px;" type="submit" value="Ocijeni" />
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div style="margin-top: 100px;">
+                    <form method="post" action="/Post/Rate?PostID=@Model.Post.PostID">
+                        @Html.AntiForgeryToken()
+                        <h2>Ocjena Voznje</h2>
+                        <br />
+                        <label>ocjena (1-5)</label>
+                        <br />
+                        <label>@Model.Ocjena.RatingValue</label>
+                        <br />
+                        <label style="margin-top:30px;">Vas komentar</label>
+                        <br />
+                        <label>@Model.Ocjena.Description</label>
+
+                        <br />
+                    </form>
+                </div>
+            }
         }
     </div>
 </div>

@@ -20,14 +20,13 @@ namespace Pocherajme.Models
         public DateTime? UpdatedAt { get; set; }
         public int? MaxPassengers { get; set; }
         public int? EstimatedTravelTime { get; set; }
-
+        public bool Completed { get; set; }
         public TransportType TypeOfTransport { get; set; }
         [ForeignKey("TypeOfTransport")]
         public int? TransportTypeID { get; set; }
-
         public ApplicationUser User { get; set; }
         [ForeignKey("ApplicationUser")]
-        public int? ApplicationUserID { get; set; }
+        public int ApplicationUserID { get; set; }
 
     }
 }

@@ -16,7 +16,7 @@ namespace Pocherajme.Controllers
         }
         public string Seed()
         {
-            List<string> vrstePrevoza = new List<string>() { "Auto", "Kamion", "Autobus", "Avion", "Voz", "Brod" };
+            List<string> vrstePrevoza = new List<string>() { "Auto", "Kamion", "Autobus", "Avion", "Voz", "Brod", "Splav" };
             foreach (var item in vrstePrevoza)
             {
                 var exits = _db.TransportTypes.FirstOrDefault(x => x.Type == item);

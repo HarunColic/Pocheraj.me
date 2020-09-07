@@ -73,12 +73,48 @@
                     Ocjena <i class="fa fa-link fa-1x"></i>
                 </div>
                 <div class="panel-body">
-                    4.5
+                    @Model.Ocjena
                 </div>
             </div>
         </div>
         <!--/col-3-->
         <div class="col-sm-9" style="" contenteditable="false">
+            <div class="panel panel-default">
+                <div class="panel-heading">Aplicirane voŽnje</div>
+                @if (Model.Aplicirani.Count == 0)
+                {
+                    <h1 style="text-align:center;">Trenutno nema prevoza</h1>
+                }
+                else
+                {
+                    <div style="padding:5%;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Naslov</th>
+                                    <th scope="col">Polazište</th>
+                                    <th scope="col">Odredište</th>
+                                    <th scope="col">Vrijeme polaska</th>
+                                    <th scope="col">Akcije</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Aplicirani)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.Title</th>
+                                        <td>@item.From</td>
+                                        <td>@item.To</td>
+                                        <td>@item.DateTimeOfDeparture.ToString("dd.MM.yyyy. H:mm")</td>
+                                        <td><a href="/Post/ShowPost/@item.PostID" class="btn btn-default">Pregled</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading">Ponude</div>
                 @if (Model.Ponude.Count == 0)
@@ -155,3 +191,4 @@
                 </div>
             </div>
         </div>
+

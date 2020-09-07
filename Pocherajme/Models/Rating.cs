@@ -17,6 +17,9 @@ namespace Pocherajme.Models
         [ForeignKey("Rater")]
         public int RaterID { get; set; }
         public ApplicationUser Rater { get; set; }
+        public Post Post { get; set; }
+        [ForeignKey(nameof(Post))]
+        public int PostID { get; set; }
         public float RatingValue { get; set; }
         public string Description { get; set; }
         public DateTime? CreatedAt { get; set; }

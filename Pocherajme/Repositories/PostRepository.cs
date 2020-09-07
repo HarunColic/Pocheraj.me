@@ -19,7 +19,10 @@ namespace Pocherajme.Repositories
 
         public bool Exists(ArrayList list)
         {
-            throw new NotImplementedException();
+            if (_db.Posts.FirstOrDefault(x => x.PostID == int.Parse(list[0].ToString())) != null)
+                return true;
+            else
+                return false;
         }
 
         public Post Get(int id)
@@ -29,7 +32,7 @@ namespace Pocherajme.Repositories
         public List<Post> GetAll()
         {
 
-            return _db.Posts.ToList();
+            return _db.Posts.Where(x => !x.Completed).ToList();
         }
 
         public List<Post> GetAllWithFilter(ArrayList filters)
@@ -43,8 +46,21 @@ namespace Pocherajme.Repositories
             bool IsPotraznja = int.Parse(filters[0].ToString()) == 0;//ako je 0 onda je zatrazena potrazna, ako je false onda je ponuda
             try
             {
-                if (UserID != 0)
+                if (UserID != 0 && int.Parse(filters[0].ToString()) != 3)
                     return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja && p.ApplicationUserID == UserID).ToList();
+                else if(UserID != 0 && int.Parse(filters[0].ToString()) == 3)
+                {
+                    var apps = _db.Applications.Where(x => x.UserID == UserID).ToList();
+
+                    List<Post> posts = new List<Post>();
+
+                    foreach(var i in apps)
+                    {
+                        posts.Add(_db.Posts.Find(i.PostID));
+                    }
+
+                    return posts;
+                }
                 else
                     return _db.Posts.Where(p => p.IsPotraznja == IsPotraznja).ToList();
             }
@@ -57,8 +73,18 @@ namespace Pocherajme.Repositories
 
         public Post Save(Post post)
         {
-            _db.Posts.Add(post);
+
+            ArrayList lista = new ArrayList();
+
+            lista.Add(post.PostID);
+
+            if (this.Exists(lista))
+                _db.Posts.Update(post);
+            else
+                _db.Posts.Add(post);
+
             _db.SaveChanges();
+
             return post;
         }
     }

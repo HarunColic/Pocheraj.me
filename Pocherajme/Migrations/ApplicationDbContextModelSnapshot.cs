@@ -15,7 +15,7 @@ namespace Pocherajme.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -111,6 +111,8 @@ namespace Pocherajme.Migrations
                     b.Property<int>("ApplicationID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Accepted");
 
                     b.Property<DateTime?>("CreatedAt");
 
@@ -268,9 +270,11 @@ namespace Pocherajme.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ApplicationUserID");
+                    b.Property<int>("ApplicationUserID");
 
                     b.Property<string>("Car");
+
+                    b.Property<bool>("Completed");
 
                     b.Property<DateTime?>("CreatedAt");
 
@@ -330,6 +334,8 @@ namespace Pocherajme.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("PostID");
+
                     b.Property<int>("RaterID");
 
                     b.Property<float>("RatingValue");
@@ -339,6 +345,8 @@ namespace Pocherajme.Migrations
                     b.Property<int>("UserID");
 
                     b.HasKey("RatingID");
+
+                    b.HasIndex("PostID");
 
                     b.HasIndex("RaterID");
 
@@ -460,7 +468,8 @@ namespace Pocherajme.Migrations
                 {
                     b.HasOne("Pocherajme.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserID");
+                        .HasForeignKey("ApplicationUserID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Pocherajme.Models.TransportType", "TypeOfTransport")
                         .WithMany()
@@ -477,6 +486,11 @@ namespace Pocherajme.Migrations
 
             modelBuilder.Entity("Pocherajme.Models.Rating", b =>
                 {
+                    b.HasOne("Pocherajme.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Pocherajme.Models.ApplicationUser", "Rater")
                         .WithMany()
                         .HasForeignKey("RaterID")
